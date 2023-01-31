@@ -1261,6 +1261,7 @@
         "dependencies": {
           "Microsoft.EntityFrameworkCore": "7.0.2",
           "Microsoft.EntityFrameworkCore.SqlServer": "7.0.2",
+          "Microsoft.EntityFrameworkCore.SqlServer.Design": "1.1.6",
           "Qinchili.Domain": "1.0.0"
         },
         "runtime": {
