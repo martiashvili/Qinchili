@@ -27,6 +27,10 @@ namespace Modules.Products
         public CreateProductRequestValidator()
         {
             RuleFor(request => request.Name).NotEmpty();
+            RuleFor(request => request.Width).NotEmpty();
+            RuleFor(request => request.Height).NotEmpty();
+            RuleFor(request => request.CardsCount).NotEmpty();
+            RuleFor(request => request.Price).NotEmpty();
         }
     }
 }
