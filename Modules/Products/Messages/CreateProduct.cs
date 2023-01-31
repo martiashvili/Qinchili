@@ -1,4 +1,6 @@
-﻿namespace Modules.Products
+﻿using FluentValidation;
+
+namespace Modules.Products
 {
     public class CreateProductRequest
     {
@@ -18,5 +20,13 @@
     public class CreateProductResponse
     {
         public ProductModel Product { get; set; }
+    }
+
+    public class CreateProductRequestValidator : AbstractValidator<CreateProductRequest>
+    {
+        public CreateProductRequestValidator()
+        {
+            RuleFor(request => request.Name).NotEmpty();
+        }
     }
 }
