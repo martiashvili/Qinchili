@@ -16,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj" />
     <ProjectReference Include="..\Modules\Modules.csproj" />
     <ProjectReference Include="..\Qinchili.Db\Qinchili.Db.csproj" />
     <ProjectReference Include="..\Qinchili.Model\Qinchili.Domain.csproj" />

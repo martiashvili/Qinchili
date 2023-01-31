@@ -1,4 +1,6 @@
-﻿using Qinchili.Db;
+﻿using Common;
+using Microsoft.EntityFrameworkCore;
+using Qinchili.Db;
 using Qinchili.Model;
 
 namespace Modules.Products
@@ -12,11 +14,17 @@ namespace Modules.Products
             this.db = db;
         }
 
-        public CreateProductResponse CreateProduct(CreateProductRequest request)
+        public IResponse<CreateProductResponse> CreateProduct(CreateProductRequest request)
         {
+            var existingProduct = db.Products.AsNoTracking().SingleOrDefault(p => p.Name == request.Name.Trim());
+            if (existingProduct != null)
+            {
+                return ResponseHelper.Fail<CreateProductResponse>(StatusCode.ProductWithTheSameNameAlreadyExists);
+            }
+
             var product = new Product
             {
-                Name = request.Name,
+                Name = request.Name.Trim(),
                 Comment = request.Comment,
                 Width = request.Width,
                 Height = request.Height,
@@ -28,7 +36,7 @@ namespace Modules.Products
             db.Products.Add(product);
             db.SaveChanges();
 
-            return new CreateProductResponse
+            return ResponseHelper.Ok(new CreateProductResponse
             {
                 Product = new ProductModel
                 {
@@ -41,7 +49,7 @@ namespace Modules.Products
                     Price = product.Price,
                     TimeStamp = product.TimeStamp
                 }
-            };
+            });
         }
     }
 }

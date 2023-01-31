@@ -1,7 +1,9 @@
-﻿namespace Modules.Products
+﻿using Common;
+
+namespace Modules.Products
 {
     public interface IProductService
     {
-        public CreateProductResponse CreateProduct(CreateProductRequest request);
+        public IResponse<CreateProductResponse> CreateProduct(CreateProductRequest request);
     }
 }
