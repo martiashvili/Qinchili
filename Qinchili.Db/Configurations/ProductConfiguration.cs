@@ -10,6 +10,11 @@ namespace Qinchili.Db.Configurations
         public override void Map(EntityTypeBuilder<Product> builder)
         {
             builder.ToTable("Products");
+
+            builder.Property(prop => prop.Name).IsRequired();
+            builder.Property(prop => prop.Width).IsRequired();
+            builder.Property(prop => prop.Height).IsRequired();
+            builder.Property(prop => prop.Price).IsRequired();
         }
     }
 }

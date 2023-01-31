@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Qinchili.Domain;
 using Qinchili.Model;
 using System.Reflection;
 
@@ -13,6 +14,8 @@ namespace Qinchili.Db
         }
 
         public DbSet<Product> Products { get; set; }
+
+        public DbSet<Customer> Customers { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
