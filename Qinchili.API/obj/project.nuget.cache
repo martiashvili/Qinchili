@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "pC0kDUDUe63ZqZra1V/mCqFzlTFsxyfezpMsZzRI1foyrjiApPJaQas7nozDN7i1tBOIJEFUYUFQI+VtlRacIA==",
+  "dgSpecHash": "1RblJfSu3M/BKy2maOk3j6EX6yTcylU6b8rjh8ctK1lR7+o+ITJT+Z/3ilJ6afCPRTZi6lHaPmSKQMr1QHfoKQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\giorgi.martiashvili\\source\\repos\\Qinchili.API\\Qinchili.API\\Qinchili.API.csproj",
+  "projectFilePath": "C:\\Users\\giorgi.martiashvili\\source\\repos\\Qinchili\\Qinchili.API\\Qinchili.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\giorgi.martiashvili\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\giorgi.martiashvili\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",

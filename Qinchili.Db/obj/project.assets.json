@@ -3246,11 +3246,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\giorgi.martiashvili\\source\\repos\\Qinchili.API\\Qinchili.Db\\Qinchili.Db.csproj",
+      "projectUniqueName": "C:\\Users\\giorgi.martiashvili\\source\\repos\\Qinchili\\Qinchili.Db\\Qinchili.Db.csproj",
       "projectName": "Qinchili.Db",
-      "projectPath": "C:\\Users\\giorgi.martiashvili\\source\\repos\\Qinchili.API\\Qinchili.Db\\Qinchili.Db.csproj",
+      "projectPath": "C:\\Users\\giorgi.martiashvili\\source\\repos\\Qinchili\\Qinchili.Db\\Qinchili.Db.csproj",
       "packagesPath": "C:\\Users\\giorgi.martiashvili\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\giorgi.martiashvili\\source\\repos\\Qinchili.API\\Qinchili.Db\\obj\\",
+      "outputPath": "C:\\Users\\giorgi.martiashvili\\source\\repos\\Qinchili\\Qinchili.Db\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -3270,8 +3270,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\giorgi.martiashvili\\source\\repos\\Qinchili.API\\Qinchili.Model\\Qinchili.Domain.csproj": {
-              "projectPath": "C:\\Users\\giorgi.martiashvili\\source\\repos\\Qinchili.API\\Qinchili.Model\\Qinchili.Domain.csproj"
+            "C:\\Users\\giorgi.martiashvili\\source\\repos\\Qinchili\\Qinchili.Model\\Qinchili.Domain.csproj": {
+              "projectPath": "C:\\Users\\giorgi.martiashvili\\source\\repos\\Qinchili\\Qinchili.Model\\Qinchili.Domain.csproj"
             }
           }
         }

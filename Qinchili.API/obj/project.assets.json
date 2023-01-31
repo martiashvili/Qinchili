@@ -3497,11 +3497,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\giorgi.martiashvili\\source\\repos\\Qinchili.API\\Qinchili.API\\Qinchili.API.csproj",
+      "projectUniqueName": "C:\\Users\\giorgi.martiashvili\\source\\repos\\Qinchili\\Qinchili.API\\Qinchili.API.csproj",
       "projectName": "Qinchili.API",
-      "projectPath": "C:\\Users\\giorgi.martiashvili\\source\\repos\\Qinchili.API\\Qinchili.API\\Qinchili.API.csproj",
+      "projectPath": "C:\\Users\\giorgi.martiashvili\\source\\repos\\Qinchili\\Qinchili.API\\Qinchili.API.csproj",
       "packagesPath": "C:\\Users\\giorgi.martiashvili\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\giorgi.martiashvili\\source\\repos\\Qinchili.API\\Qinchili.API\\obj\\",
+      "outputPath": "C:\\Users\\giorgi.martiashvili\\source\\repos\\Qinchili\\Qinchili.API\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -3521,14 +3521,14 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\giorgi.martiashvili\\source\\repos\\Qinchili.API\\Modules\\Modules.csproj": {
-              "projectPath": "C:\\Users\\giorgi.martiashvili\\source\\repos\\Qinchili.API\\Modules\\Modules.csproj"
+            "C:\\Users\\giorgi.martiashvili\\source\\repos\\Qinchili\\Modules\\Modules.csproj": {
+              "projectPath": "C:\\Users\\giorgi.martiashvili\\source\\repos\\Qinchili\\Modules\\Modules.csproj"
             },
-            "C:\\Users\\giorgi.martiashvili\\source\\repos\\Qinchili.API\\Qinchili.Db\\Qinchili.Db.csproj": {
-              "projectPath": "C:\\Users\\giorgi.martiashvili\\source\\repos\\Qinchili.API\\Qinchili.Db\\Qinchili.Db.csproj"
+            "C:\\Users\\giorgi.martiashvili\\source\\repos\\Qinchili\\Qinchili.Db\\Qinchili.Db.csproj": {
+              "projectPath": "C:\\Users\\giorgi.martiashvili\\source\\repos\\Qinchili\\Qinchili.Db\\Qinchili.Db.csproj"
             },
-            "C:\\Users\\giorgi.martiashvili\\source\\repos\\Qinchili.API\\Qinchili.Model\\Qinchili.Domain.csproj": {
-              "projectPath": "C:\\Users\\giorgi.martiashvili\\source\\repos\\Qinchili.API\\Qinchili.Model\\Qinchili.Domain.csproj"
+            "C:\\Users\\giorgi.martiashvili\\source\\repos\\Qinchili\\Qinchili.Model\\Qinchili.Domain.csproj": {
+              "projectPath": "C:\\Users\\giorgi.martiashvili\\source\\repos\\Qinchili\\Qinchili.Model\\Qinchili.Domain.csproj"
             }
           }
         }

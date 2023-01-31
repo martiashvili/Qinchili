@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\giorgi.martiashvili\\source\\repos\\Qinchili.API\\Qinchili.Model\\Qinchili.Domain.csproj": {}
+    "C:\\Users\\giorgi.martiashvili\\source\\repos\\Qinchili\\Qinchili.Model\\Qinchili.Domain.csproj": {}
   },
   "projects": {
-    "C:\\Users\\giorgi.martiashvili\\source\\repos\\Qinchili.API\\Qinchili.Model\\Qinchili.Domain.csproj": {
+    "C:\\Users\\giorgi.martiashvili\\source\\repos\\Qinchili\\Qinchili.Model\\Qinchili.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\giorgi.martiashvili\\source\\repos\\Qinchili.API\\Qinchili.Model\\Qinchili.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\giorgi.martiashvili\\source\\repos\\Qinchili\\Qinchili.Model\\Qinchili.Domain.csproj",
         "projectName": "Qinchili.Domain",
-        "projectPath": "C:\\Users\\giorgi.martiashvili\\source\\repos\\Qinchili.API\\Qinchili.Model\\Qinchili.Domain.csproj",
+        "projectPath": "C:\\Users\\giorgi.martiashvili\\source\\repos\\Qinchili\\Qinchili.Model\\Qinchili.Domain.csproj",
         "packagesPath": "C:\\Users\\giorgi.martiashvili\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\giorgi.martiashvili\\source\\repos\\Qinchili.API\\Qinchili.Model\\obj\\",
+        "outputPath": "C:\\Users\\giorgi.martiashvili\\source\\repos\\Qinchili\\Qinchili.Model\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
