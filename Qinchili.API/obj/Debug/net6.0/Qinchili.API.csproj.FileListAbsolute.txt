@@ -78,3 +78,5 @@ C:\Users\giorgi.martiashvili\source\repos\Qinchili.API\Qinchili.API\bin\Debug\ne
 C:\Users\giorgi.martiashvili\source\repos\Qinchili.API\Qinchili.API\bin\Debug\net6.0\Qinchili.Domain.pdb
 C:\Users\giorgi.martiashvili\source\repos\Qinchili.API\Qinchili.API\bin\Debug\net6.0\Modules.dll
 C:\Users\giorgi.martiashvili\source\repos\Qinchili.API\Qinchili.API\bin\Debug\net6.0\Modules.pdb
+C:\Users\giorgi.martiashvili\source\repos\Qinchili.API\Qinchili.API\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Relational.Design.dll
+C:\Users\giorgi.martiashvili\source\repos\Qinchili.API\Qinchili.API\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.SqlServer.Design.dll
