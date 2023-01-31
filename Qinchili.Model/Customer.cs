@@ -10,6 +10,8 @@
 
         public string PhoneNumber { get; set; }
 
+        public string FacebookUrl { get; set; }
+
         public DateTime Timestamp { get; set; }
 
         public ICollection<CustomerDeliveryAddress> CustomerDeliveryAddresses { get; set; }

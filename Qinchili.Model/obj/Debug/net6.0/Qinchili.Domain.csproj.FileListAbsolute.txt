@@ -10,3 +10,15 @@ C:\Users\giorgi.martiashvili\source\repos\Qinchili.API\Qinchili.Model\obj\Debug\
 C:\Users\giorgi.martiashvili\source\repos\Qinchili.API\Qinchili.Model\obj\Debug\net6.0\refint\Qinchili.Domain.dll
 C:\Users\giorgi.martiashvili\source\repos\Qinchili.API\Qinchili.Model\obj\Debug\net6.0\Qinchili.Domain.pdb
 C:\Users\giorgi.martiashvili\source\repos\Qinchili.API\Qinchili.Model\obj\Debug\net6.0\ref\Qinchili.Domain.dll
+C:\Users\giorgi.martiashvili\source\repos\Qinchili\Qinchili.Model\bin\Debug\net6.0\Qinchili.Domain.deps.json
+C:\Users\giorgi.martiashvili\source\repos\Qinchili\Qinchili.Model\bin\Debug\net6.0\Qinchili.Domain.dll
+C:\Users\giorgi.martiashvili\source\repos\Qinchili\Qinchili.Model\bin\Debug\net6.0\Qinchili.Domain.pdb
+C:\Users\giorgi.martiashvili\source\repos\Qinchili\Qinchili.Model\obj\Debug\net6.0\Qinchili.Domain.csproj.AssemblyReference.cache
+C:\Users\giorgi.martiashvili\source\repos\Qinchili\Qinchili.Model\obj\Debug\net6.0\Qinchili.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\giorgi.martiashvili\source\repos\Qinchili\Qinchili.Model\obj\Debug\net6.0\Qinchili.Domain.AssemblyInfoInputs.cache
+C:\Users\giorgi.martiashvili\source\repos\Qinchili\Qinchili.Model\obj\Debug\net6.0\Qinchili.Domain.AssemblyInfo.cs
+C:\Users\giorgi.martiashvili\source\repos\Qinchili\Qinchili.Model\obj\Debug\net6.0\Qinchili.Domain.csproj.CoreCompileInputs.cache
+C:\Users\giorgi.martiashvili\source\repos\Qinchili\Qinchili.Model\obj\Debug\net6.0\Qinchili.Domain.dll
+C:\Users\giorgi.martiashvili\source\repos\Qinchili\Qinchili.Model\obj\Debug\net6.0\refint\Qinchili.Domain.dll
+C:\Users\giorgi.martiashvili\source\repos\Qinchili\Qinchili.Model\obj\Debug\net6.0\Qinchili.Domain.pdb
+C:\Users\giorgi.martiashvili\source\repos\Qinchili\Qinchili.Model\obj\Debug\net6.0\ref\Qinchili.Domain.dll

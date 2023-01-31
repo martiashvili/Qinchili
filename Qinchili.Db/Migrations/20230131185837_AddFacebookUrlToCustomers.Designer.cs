@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Qinchili.Db;
 
@@ -11,9 +12,11 @@ using Qinchili.Db;
 namespace Qinchili.Db.Migrations
 {
     [DbContext(typeof(QinchiliContext))]
-    partial class QinchiliContextModelSnapshot : ModelSnapshot
+    [Migration("20230131185837_AddFacebookUrlToCustomers")]
+    partial class AddFacebookUrlToCustomers
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
