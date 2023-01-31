@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Modules.Products;
 
 namespace Qinchili.API.Controllers
@@ -15,13 +14,10 @@ namespace Qinchili.API.Controllers
             this.productService = productService;
         }
 
-        [Route("")]
-        [HttpGet]
-        public bool GetProduct()
+        [HttpPost("")]
+        public IActionResult CreateProduct(CreateProductRequest request)
         {
-            productService.GetProduct();
-
-            return true;
+            return Ok(productService.CreateProduct(request));
         }
     }
 }

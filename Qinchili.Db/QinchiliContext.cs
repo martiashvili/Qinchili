@@ -22,5 +22,10 @@ namespace Qinchili.Db
             base.OnModelCreating(builder);
             builder.AddEntityConfigurations(GetType().GetTypeInfo().Assembly, nameof(QinchiliContext));
         }
+
+        public override int SaveChanges()
+        {
+            return base.SaveChanges();
+        }
     }
 }

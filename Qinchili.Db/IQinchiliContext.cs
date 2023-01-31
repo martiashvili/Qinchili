@@ -9,5 +9,7 @@ namespace Qinchili.Db
         DbSet<Product> Products { get; set; }
         
         DbSet<Customer> Customers { get; set; }
+
+        int SaveChanges();
     }
 }
