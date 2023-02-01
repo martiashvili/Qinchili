@@ -40,7 +40,7 @@ namespace Qinchili.API.Controllers
             return Ok(customerService.GetCustomers());
         }
 
-        [HttpPost("deliveryaddress/add")]
+        [HttpPost("deliveryaddress")]
         public IActionResult AddDeliveryAddress([FromBody] AddDeliveryAddressRequest request)
         {
             return Ok(customerService.AddDeliveryAddress(request));
