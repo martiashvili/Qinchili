@@ -17,6 +17,11 @@ namespace Qinchili.API.Controllers
         [HttpPost("")]
         public IActionResult CreateProduct(CreateProductRequest request)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(request);
+            }
+
             return Ok(productService.CreateProduct(request));
         }
     }

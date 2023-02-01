@@ -1,4 +1,5 @@
-﻿using Modules.Products;
+﻿using FluentValidation;
+using Modules.Products;
 
 namespace Qinchili.API.Helpers
 {
@@ -7,6 +8,11 @@ namespace Qinchili.API.Helpers
         public static void AddDIServices(this IServiceCollection services)
         {
             services.AddScoped<IProductService, ProductService>();
+        }
+
+        public static void AddAbstractValidators(this IServiceCollection services)
+        {
+            services.AddScoped<IValidator<CreateProductRequest>, CreateProductRequestValidator>();
         }
     }
 }

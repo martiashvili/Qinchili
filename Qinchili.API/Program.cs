@@ -18,6 +18,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddDIServices();
+builder.Services.AddAbstractValidators();
 
 builder.Services.AddMvc();
 builder.Services.AddDbContext<IQinchiliContext, QinchiliContext>(item => item.UseSqlServer(builder.Configuration.GetConnectionString("Qinchili")));
