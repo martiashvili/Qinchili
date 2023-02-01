@@ -30,6 +30,10 @@ namespace Qinchili.Db.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CustomerId"));
 
+                    b.Property<string>("Comment")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("FacebookUrl")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -69,6 +73,12 @@ namespace Qinchili.Db.Migrations
                     b.Property<int>("CustomerId")
                         .HasColumnType("int");
 
+                    b.Property<DateTime?>("DeleteTimestamp")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDefault")
+                        .HasColumnType("bit");
+
                     b.Property<DateTime>("Timestamp")
                         .HasColumnType("datetime2");
 
@@ -76,7 +86,7 @@ namespace Qinchili.Db.Migrations
 
                     b.HasIndex("CustomerId");
 
-                    b.ToTable("CustomerDeliveryAddress");
+                    b.ToTable("CustomerDeliveryAddresses");
                 });
 
             modelBuilder.Entity("Qinchili.Model.Product", b =>

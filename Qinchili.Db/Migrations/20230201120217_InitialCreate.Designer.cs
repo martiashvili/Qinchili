@@ -12,8 +12,8 @@ using Qinchili.Db;
 namespace Qinchili.Db.Migrations
 {
     [DbContext(typeof(QinchiliContext))]
-    [Migration("20230131185837_AddFacebookUrlToCustomers")]
-    partial class AddFacebookUrlToCustomers
+    [Migration("20230201120217_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -32,6 +32,10 @@ namespace Qinchili.Db.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CustomerId"));
+
+                    b.Property<string>("Comment")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FacebookUrl")
                         .IsRequired()
@@ -72,6 +76,12 @@ namespace Qinchili.Db.Migrations
                     b.Property<int>("CustomerId")
                         .HasColumnType("int");
 
+                    b.Property<DateTime?>("DeleteTimestamp")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDefault")
+                        .HasColumnType("bit");
+
                     b.Property<DateTime>("Timestamp")
                         .HasColumnType("datetime2");
 
@@ -79,7 +89,7 @@ namespace Qinchili.Db.Migrations
 
                     b.HasIndex("CustomerId");
 
-                    b.ToTable("CustomerDeliveryAddress");
+                    b.ToTable("CustomerDeliveryAddresses");
                 });
 
             modelBuilder.Entity("Qinchili.Model.Product", b =>
@@ -95,6 +105,9 @@ namespace Qinchili.Db.Migrations
 
                     b.Property<string>("Comment")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("DeleteTimeStamp")
+                        .HasColumnType("datetime2");
 
                     b.Property<int>("Height")
                         .HasColumnType("int");

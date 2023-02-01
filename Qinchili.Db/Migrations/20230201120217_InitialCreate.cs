@@ -20,6 +20,8 @@ namespace Qinchili.Db.Migrations
                     Firstname = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Lastname = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    FacebookUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Comment = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Timestamp = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
@@ -39,7 +41,8 @@ namespace Qinchili.Db.Migrations
                     Height = table.Column<int>(type: "int", nullable: false),
                     CardsCount = table.Column<int>(type: "int", nullable: false),
                     Price = table.Column<long>(type: "bigint", nullable: false),
-                    TimeStamp = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    TimeStamp = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    DeleteTimeStamp = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -47,20 +50,22 @@ namespace Qinchili.Db.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "CustomerDeliveryAddress",
+                name: "CustomerDeliveryAddresses",
                 columns: table => new
                 {
                     CustomerDeliveryAddressId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     CustomerId = table.Column<int>(type: "int", nullable: false),
+                    IsDefault = table.Column<bool>(type: "bit", nullable: false),
                     Address = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Timestamp = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    Timestamp = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    DeleteTimestamp = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_CustomerDeliveryAddress", x => x.CustomerDeliveryAddressId);
+                    table.PrimaryKey("PK_CustomerDeliveryAddresses", x => x.CustomerDeliveryAddressId);
                     table.ForeignKey(
-                        name: "FK_CustomerDeliveryAddress_Customers_CustomerId",
+                        name: "FK_CustomerDeliveryAddresses_Customers_CustomerId",
                         column: x => x.CustomerId,
                         principalTable: "Customers",
                         principalColumn: "CustomerId",
@@ -68,8 +73,8 @@ namespace Qinchili.Db.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_CustomerDeliveryAddress_CustomerId",
-                table: "CustomerDeliveryAddress",
+                name: "IX_CustomerDeliveryAddresses_CustomerId",
+                table: "CustomerDeliveryAddresses",
                 column: "CustomerId");
         }
 
@@ -77,7 +82,7 @@ namespace Qinchili.Db.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "CustomerDeliveryAddress");
+                name: "CustomerDeliveryAddresses");
 
             migrationBuilder.DropTable(
                 name: "Products");
