@@ -15,14 +15,27 @@ namespace Qinchili.API.Controllers
         }
 
         [HttpPost("")]
-        public IActionResult CreateProduct(CreateProductRequest request)
+        public IActionResult CreateProduct([FromBody] CreateProductRequest request)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(request);
-            }
-
             return Ok(productService.CreateProduct(request));
+        }
+
+        [HttpPut("")]
+        public IActionResult UpdateProduct([FromBody] UpdateProductRequest request)
+        {
+            return Ok(productService.UpdateProduct(request));
+        }
+
+        [HttpGet("")]
+        public IActionResult GetProduct([FromQuery] GetProductRequest request)
+        {
+            return Ok(productService.GetProduct(request));
+        }
+
+        [HttpGet("all")]
+        public IActionResult GetProducts()
+        {
+            return Ok(productService.GetProducts());
         }
     }
 }

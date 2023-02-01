@@ -13,6 +13,8 @@ namespace Qinchili.API.Helpers
         public static void AddAbstractValidators(this IServiceCollection services)
         {
             services.AddScoped<IValidator<CreateProductRequest>, CreateProductRequestValidator>();
+            services.AddScoped<IValidator<UpdateProductRequest>, UpdateProductRequestValidator>();
+            services.AddScoped<IValidator<GetProductRequest>, GetProductRequestValidator>();
         }
     }
 }

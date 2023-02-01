@@ -38,18 +38,65 @@ namespace Modules.Products
 
             return ResponseHelper.Ok(new CreateProductResponse
             {
-                Product = new ProductModel
-                {
-                    ProductId = product.ProductId,
-                    Name = product.Name,
-                    Comment = product.Comment,
-                    Width = product.Width,
-                    Height = product.Height,
-                    CardsCount = product.CardsCount,
-                    Price = product.Price,
-                    TimeStamp = product.TimeStamp
-                }
+                Product = CreateProductModel(product)
             });
+        }
+
+        public IResponse<GetProductResponse> GetProduct(GetProductRequest request)
+        {
+            var product = db.Products.AsNoTracking().SingleOrDefault(product => product.ProductId == request.ProductId);
+            if (product == null)
+            {
+                return ResponseHelper.Fail<GetProductResponse>(StatusCode.ProductNotFound);
+            }
+
+            return ResponseHelper.Ok(new GetProductResponse
+            {
+                Product = CreateProductModel(product)
+            });
+        }
+
+        public IResponse<GetProductsResponse> GetProducts()
+        {
+            var products = db.Products.AsNoTracking().ToList();
+
+            return ResponseHelper.Ok(new GetProductsResponse
+            {
+                Products = products.Select(product => CreateProductModel(product))
+            });
+        }
+
+        public IResponse<UpdateProductResponse> UpdateProduct(UpdateProductRequest request)
+        {
+            var product = db.Products.SingleOrDefault(product => product.ProductId == request.ProductId);
+            if (product == null)
+            {
+                return ResponseHelper.Fail<UpdateProductResponse>(StatusCode.ProductNotFound);
+            }
+
+            product.Name = request.Name;
+            product.Comment = request.Comment;
+            product.Width = request.Width;
+            product.Height = request.Height;
+            product.Price = request.Price;
+            product.CardsCount = request.CardsCount;
+
+            return ResponseHelper.Ok(new UpdateProductResponse { Product = CreateProductModel(product) });
+        }
+
+        private ProductModel CreateProductModel(Product product)
+        {
+            return new ProductModel
+            {
+                ProductId = product.ProductId,
+                Name = product.Name,
+                Comment = product.Comment,
+                Width = product.Width,
+                Height = product.Height,
+                CardsCount = product.CardsCount,
+                Price = product.Price,
+                TimeStamp = product.TimeStamp
+            };
         }
     }
 }
