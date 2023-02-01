@@ -5,6 +5,6 @@
         Fail = 0,
         Success = 1,
         ProductWithTheSameNameAlreadyExists = 2,
-        ProductNotFound = 3,
+        ProductNotFound = 3
     }
 }

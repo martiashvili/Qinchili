@@ -74,12 +74,19 @@ namespace Modules.Products
                 return ResponseHelper.Fail<UpdateProductResponse>(StatusCode.ProductNotFound);
             }
 
+            if (db.Products.Any(product => product.ProductId != request.ProductId && product.Name == request.Name.Trim()))
+            {
+                return ResponseHelper.Fail<UpdateProductResponse>(StatusCode.ProductWithTheSameNameAlreadyExists);
+            }
+
             product.Name = request.Name;
             product.Comment = request.Comment;
             product.Width = request.Width;
             product.Height = request.Height;
             product.Price = request.Price;
             product.CardsCount = request.CardsCount;
+
+            db.SaveChanges();
 
             return ResponseHelper.Ok(new UpdateProductResponse { Product = CreateProductModel(product) });
         }
