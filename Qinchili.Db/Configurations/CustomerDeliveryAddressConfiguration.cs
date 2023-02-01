@@ -11,7 +11,7 @@ namespace Qinchili.Db.Configurations
             builder.ToTable("CustomerDeliveryAddresses");
 
             builder.Property(prop => prop.Address).IsRequired();
-            builder.HasOne(address => address.Customer).WithMany(customer => customer.CustomerDeliveryAddresses).HasForeignKey(address => address.CustomerId);
+            builder.HasOne(address => address.Customer).WithMany(customer => customer.CustomerDeliveryAddresses).HasForeignKey(address => address.CustomerId).OnDelete(DeleteBehavior.NoAction); ;
         }
     }
 }

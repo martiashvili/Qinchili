@@ -12,7 +12,7 @@ using Qinchili.Db;
 namespace Qinchili.Db.Migrations
 {
     [DbContext(typeof(QinchiliContext))]
-    [Migration("20230201120217_InitialCreate")]
+    [Migration("20230201125121_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -34,11 +34,9 @@ namespace Qinchili.Db.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CustomerId"));
 
                     b.Property<string>("Comment")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FacebookUrl")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Firstname")
@@ -50,7 +48,6 @@ namespace Qinchili.Db.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PhoneNumber")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("Timestamp")
@@ -90,6 +87,91 @@ namespace Qinchili.Db.Migrations
                     b.HasIndex("CustomerId");
 
                     b.ToTable("CustomerDeliveryAddresses");
+                });
+
+            modelBuilder.Entity("Qinchili.Domain.Order", b =>
+                {
+                    b.Property<int>("OrderId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("OrderId"));
+
+                    b.Property<int>("AddressCustomerDeliveryAddressId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Comment")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CompleteDeliveryInfo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("CustomerId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DeiveryAddressId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("DeliveredTimestamp")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("DeliveryPrice")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("Discount")
+                        .HasColumnType("bigint");
+
+                    b.Property<bool>("IsPaid")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("SentTimestamp")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("Timestamp")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("OrderId");
+
+                    b.HasIndex("AddressCustomerDeliveryAddressId");
+
+                    b.HasIndex("CustomerId");
+
+                    b.ToTable("Orders");
+                });
+
+            modelBuilder.Entity("Qinchili.Domain.OrderItem", b =>
+                {
+                    b.Property<int>("OrderItemId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("OrderItemId"));
+
+                    b.Property<DateTime?>("DeleteTimestamp")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("OrderId")
+                        .HasColumnType("int");
+
+                    b.Property<long>("Price")
+                        .HasColumnType("bigint");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("Timestamp")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("OrderItemId");
+
+                    b.HasIndex("OrderId");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("OrderItems");
                 });
 
             modelBuilder.Entity("Qinchili.Model.Product", b =>
@@ -141,9 +223,64 @@ namespace Qinchili.Db.Migrations
                     b.Navigation("Customer");
                 });
 
+            modelBuilder.Entity("Qinchili.Domain.Order", b =>
+                {
+                    b.HasOne("Qinchili.Domain.CustomerDeliveryAddress", "Address")
+                        .WithMany("Orders")
+                        .HasForeignKey("AddressCustomerDeliveryAddressId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Qinchili.Domain.Customer", "Customer")
+                        .WithMany("Orders")
+                        .HasForeignKey("CustomerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Address");
+
+                    b.Navigation("Customer");
+                });
+
+            modelBuilder.Entity("Qinchili.Domain.OrderItem", b =>
+                {
+                    b.HasOne("Qinchili.Domain.Order", "Order")
+                        .WithMany("OrderItems")
+                        .HasForeignKey("OrderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Qinchili.Model.Product", "Product")
+                        .WithMany("OrderItems")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Order");
+
+                    b.Navigation("Product");
+                });
+
             modelBuilder.Entity("Qinchili.Domain.Customer", b =>
                 {
                     b.Navigation("CustomerDeliveryAddresses");
+
+                    b.Navigation("Orders");
+                });
+
+            modelBuilder.Entity("Qinchili.Domain.CustomerDeliveryAddress", b =>
+                {
+                    b.Navigation("Orders");
+                });
+
+            modelBuilder.Entity("Qinchili.Domain.Order", b =>
+                {
+                    b.Navigation("OrderItems");
+                });
+
+            modelBuilder.Entity("Qinchili.Model.Product", b =>
+                {
+                    b.Navigation("OrderItems");
                 });
 #pragma warning restore 612, 618
         }

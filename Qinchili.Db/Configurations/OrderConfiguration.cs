@@ -10,8 +10,8 @@ namespace Qinchili.Db.Configurations
         {
             builder.ToTable("Orders");
 
-            builder.HasOne(order => order.Customer).WithMany(customer => customer.Orders).HasForeignKey(order => order.CustomerId);
-            builder.HasOne(order => order.Address).WithMany(address => address.Orders).HasForeignKey(order => order.DeiveryAddressId);
+            builder.HasOne(order => order.Customer).WithMany(customer => customer.Orders).HasForeignKey(order => order.CustomerId).OnDelete(DeleteBehavior.NoAction);
+            builder.HasOne(order => order.Address).WithMany(address => address.Orders).HasForeignKey(order => order.DeiveryAddressId).OnDelete(DeleteBehavior.NoAction);
         }
     }
 }

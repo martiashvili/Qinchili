@@ -10,19 +10,19 @@ namespace Qinchili.Domain
 
         public Customer Customer { get; set; } 
 
-        public int DeiveryAddressId { get; set; }
+        public int? DeiveryAddressId { get; set; }
 
         public CustomerDeliveryAddress Address { get; set; }
 
-        public string CompleteDeliveryInfo { get; set; }
+        public string? CompleteDeliveryInfo { get; set; }
 
-        public long Discount { get; set; }
+        public long? Discount { get; set; }
 
-        public long DeliveryPrice { get; set; }
+        public long? DeliveryPrice { get; set; }
 
         public bool IsPaid { get; set; }
 
-        public string Comment { get; set; }
+        public string? Comment { get; set; }
 
         public OrderStatus Status { get; set; }
 
