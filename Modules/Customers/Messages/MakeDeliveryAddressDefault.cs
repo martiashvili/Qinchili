@@ -7,6 +7,8 @@ namespace Modules.Customers
         public int CustomerId { get; set; }
 
         public int DeliveryAddressId { get; set; }
+
+        public bool IsDefault { get; set; }
     }
 
     public class MakeDeliveryAddressDefaultResponse

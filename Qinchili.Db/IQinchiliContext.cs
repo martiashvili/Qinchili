@@ -10,6 +10,8 @@ namespace Qinchili.Db
         
         DbSet<Customer> Customers { get; set; }
 
+        DbSet<CustomerDeliveryAddress> CustomerDeliveryAddresses { get; set; }
+
         int SaveChanges();
     }
 }

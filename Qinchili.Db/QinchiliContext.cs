@@ -17,6 +17,8 @@ namespace Qinchili.Db
 
         public DbSet<Customer> Customers { get; set; }
 
+        public DbSet<CustomerDeliveryAddress> CustomerDeliveryAddresses { get; set; }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
