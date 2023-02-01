@@ -1,4 +1,6 @@
-﻿namespace Common
+﻿using Common.Enums;
+
+namespace Common
 {
     public static class ResponseHelper
     {

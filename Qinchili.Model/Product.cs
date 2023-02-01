@@ -1,4 +1,6 @@
-﻿namespace Qinchili.Model
+﻿using Qinchili.Domain;
+
+namespace Qinchili.Model
 {
     public class Product
     {
@@ -19,5 +21,7 @@
         public DateTime TimeStamp { get; set; }
 
         public DateTime? DeleteTimeStamp { get; set; }
+
+        public ICollection<OrderItem> OrderItems { get; set; }
     }
 }

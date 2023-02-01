@@ -1,4 +1,5 @@
 ﻿using Common;
+using Common.Enums;
 using Microsoft.EntityFrameworkCore;
 using Qinchili.Db;
 using Qinchili.Model;

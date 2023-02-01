@@ -17,5 +17,7 @@
         public DateTime Timestamp { get; set; }
 
         public ICollection<CustomerDeliveryAddress> CustomerDeliveryAddresses { get; set; }
+
+        public ICollection<Order> Orders{ get; set; }
     }
 }

@@ -15,5 +15,7 @@
         public DateTime Timestamp { get; set; }
 
         public DateTime? DeleteTimestamp { get; set; }
+
+        public ICollection<Order> Orders { get; set; }
     }
 }
