@@ -15,6 +15,7 @@ namespace Qinchili.API.Helpers
             services.AddScoped<IValidator<CreateProductRequest>, CreateProductRequestValidator>();
             services.AddScoped<IValidator<UpdateProductRequest>, UpdateProductRequestValidator>();
             services.AddScoped<IValidator<GetProductRequest>, GetProductRequestValidator>();
+            services.AddScoped<IValidator<DeleteProductRequest>, DeleteProductRequestValidator>();
         }
     }
 }

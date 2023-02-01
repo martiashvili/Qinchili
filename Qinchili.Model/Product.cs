@@ -17,5 +17,7 @@
         public long Price { get; set; }
 
         public DateTime TimeStamp { get; set; }
+
+        public DateTime? DeleteTimeStamp { get; set; }
     }
 }

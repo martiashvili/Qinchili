@@ -37,5 +37,11 @@ namespace Qinchili.API.Controllers
         {
             return Ok(productService.GetProducts());
         }
+
+        [HttpDelete("")]
+        public IActionResult DeleteProduct(DeleteProductRequest request)
+        {
+            return Ok(productService.DeleteProduct(request);
+        }
     }
 }

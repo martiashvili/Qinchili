@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Modules.Products
+﻿namespace Modules.Products
 {
     public class ProductModel
     {
@@ -23,5 +17,7 @@ namespace Modules.Products
         public long Price { get; set; }
 
         public DateTime TimeStamp { get; set; }
+
+        public DateTime? DeleteTimeStamp { get; set; }
     }
 }

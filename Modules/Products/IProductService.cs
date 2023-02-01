@@ -11,5 +11,7 @@ namespace Modules.Products
         public IResponse<GetProductResponse> GetProduct(GetProductRequest request);
 
         public IResponse<GetProductsResponse> GetProducts();
+
+        public IResponse<EmptyResponse> DeleteProduct(DeleteProductRequest request);
     }
 }

@@ -16,7 +16,7 @@ namespace Modules.Products
 
         public IResponse<CreateProductResponse> CreateProduct(CreateProductRequest request)
         {
-            var existingProduct = db.Products.AsNoTracking().SingleOrDefault(p => p.Name == request.Name.Trim());
+            var existingProduct = db.Products.AsNoTracking().SingleOrDefault(p => p.Name == request.Name.Trim() && p.DeleteTimeStamp != null);
             if (existingProduct != null)
             {
                 return ResponseHelper.Fail<CreateProductResponse>(StatusCode.ProductWithTheSameNameAlreadyExists);
@@ -42,9 +42,24 @@ namespace Modules.Products
             });
         }
 
+        public IResponse<EmptyResponse> DeleteProduct(DeleteProductRequest request)
+        {
+            var product = db.Products.SingleOrDefault(product => product.ProductId == request.ProductId && product.DeleteTimeStamp != null);
+            if (product == null)
+            {
+                return ResponseHelper.Fail<EmptyResponse>(StatusCode.ProductNotFound);
+            }
+
+            product.DeleteTimeStamp = DateTime.Now;
+
+            db.SaveChanges();
+
+            return ResponseHelper.Ok();
+        }
+
         public IResponse<GetProductResponse> GetProduct(GetProductRequest request)
         {
-            var product = db.Products.AsNoTracking().SingleOrDefault(product => product.ProductId == request.ProductId);
+            var product = db.Products.AsNoTracking().SingleOrDefault(product => product.ProductId == request.ProductId && product.DeleteTimeStamp != null);
             if (product == null)
             {
                 return ResponseHelper.Fail<GetProductResponse>(StatusCode.ProductNotFound);
@@ -58,7 +73,7 @@ namespace Modules.Products
 
         public IResponse<GetProductsResponse> GetProducts()
         {
-            var products = db.Products.AsNoTracking().ToList();
+            var products = db.Products.AsNoTracking().Where(product => product.DeleteTimeStamp != null).ToList();
 
             return ResponseHelper.Ok(new GetProductsResponse
             {
@@ -68,7 +83,7 @@ namespace Modules.Products
 
         public IResponse<UpdateProductResponse> UpdateProduct(UpdateProductRequest request)
         {
-            var product = db.Products.SingleOrDefault(product => product.ProductId == request.ProductId);
+            var product = db.Products.SingleOrDefault(product => product.ProductId == request.ProductId && product.DeleteTimeStamp != null);
             if (product == null)
             {
                 return ResponseHelper.Fail<UpdateProductResponse>(StatusCode.ProductNotFound);
@@ -102,7 +117,8 @@ namespace Modules.Products
                 Height = product.Height,
                 CardsCount = product.CardsCount,
                 Price = product.Price,
-                TimeStamp = product.TimeStamp
+                TimeStamp = product.TimeStamp,
+                DeleteTimeStamp = product.DeleteTimeStamp
             };
         }
     }
