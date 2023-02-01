@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Modules.Customers;
+﻿using Microsoft.AspNetCore.Mvc;
 using Modules.Customers;
 
 namespace Qinchili.API.Controllers
