@@ -1,21 +1,19 @@
-﻿namespace Qinchili.Domain
+﻿namespace Modules.Customers
 {
-    public class Customer
+    public class CustomerModel
     {
         public int CustomerId { get; set; }
-        
+
         public string Firstname { get; set; }
-        
+
         public string Lastname { get; set; }
 
         public string PhoneNumber { get; set; }
 
         public string FacebookUrl { get; set; }
 
-        public string Comment { get; set; }
-
         public DateTime Timestamp { get; set; }
 
-        public ICollection<CustomerDeliveryAddress> CustomerDeliveryAddresses { get; set; }
+        public List<DeliveryAddressModel> DeliveryAddresses { get; set; }
     }
 }

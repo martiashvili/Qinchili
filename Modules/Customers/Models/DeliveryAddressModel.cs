@@ -1,16 +1,14 @@
-﻿namespace Qinchili.Domain
+﻿namespace Modules.Customers
 {
-    public class CustomerDeliveryAddress
+    public class DeliveryAddressModel
     {
         public int CustomerDeliveryAddressId { get; set; }
 
         public int CustomerId { get; set; }
 
-        public bool IsDefault { get; set; }
-
-        public Customer Customer { get; set; }
-
         public string Address { get; set; }
+
+        public bool IsDefault { get; set; }
 
         public DateTime Timestamp { get; set; }
 

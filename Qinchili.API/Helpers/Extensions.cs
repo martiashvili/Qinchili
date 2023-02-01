@@ -1,4 +1,5 @@
 ﻿using FluentValidation;
+using Modules.Customers;
 using Modules.Products;
 
 namespace Qinchili.API.Helpers
@@ -16,6 +17,14 @@ namespace Qinchili.API.Helpers
             services.AddScoped<IValidator<UpdateProductRequest>, UpdateProductRequestValidator>();
             services.AddScoped<IValidator<GetProductRequest>, GetProductRequestValidator>();
             services.AddScoped<IValidator<DeleteProductRequest>, DeleteProductRequestValidator>();
+
+            services.AddScoped<IValidator<CreateCustomerRequest>, CreateCustomerRequestValidator>();
+            services.AddScoped<IValidator<GetCustomerRequest>, GetCustomerRequestValidator>();
+            services.AddScoped<IValidator<UpdateCustomerRequest>, UpdateCustomerRequestValidator>();
+
+            services.AddScoped<IValidator<AddDeliveryAddressRequest>, AddDeliveryAddressRequestValidator>();
+            services.AddScoped<IValidator<DeleteDeliveryAddressRequest>, DeleteDeliveryAddressRequestValidator>();
+            services.AddScoped<IValidator<MakeDeliveryAddressDefaultRequest>, MakeDeliveryAddressDefaultRequestValidator>();
         }
     }
 }
