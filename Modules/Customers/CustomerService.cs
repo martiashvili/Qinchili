@@ -17,7 +17,7 @@ namespace Modules.Customers
 
         public IResponse<AddDeliveryAddressResponse> AddDeliveryAddress(AddDeliveryAddressRequest request)
         {
-            var address = db.CustomerDeliveryAddresses.SingleOrDefault(address => address.CustomerId == request.CustomerId && address.Address == request.Address.Trim());
+            var address = db.DeliveryAddresses.SingleOrDefault(address => address.CustomerId == request.CustomerId && address.Address == request.Address.Trim());
             if (address != null)
             {
                 return ResponseHelper.Fail<AddDeliveryAddressResponse>(StatusCode.DeliveryAddressAlreadyExists);
@@ -31,7 +31,7 @@ namespace Modules.Customers
                 Timestamp = DateTime.Now
             };
 
-            db.CustomerDeliveryAddresses.Add(address);
+            db.DeliveryAddresses.Add(address);
             db.SaveChanges();
 
             return ResponseHelper.Ok(new AddDeliveryAddressResponse { DeliveryAddress = CreateDeliveryAddressModel(address) });
@@ -57,11 +57,11 @@ namespace Modules.Customers
 
             if (request.DeliveryAddresses != null && request.DeliveryAddresses.Any())
             {
-                customer.CustomerDeliveryAddresses = new List<DeliveryAddress>();
+                customer.DeliveryAddresses = new List<DeliveryAddress>();
 
                 request.DeliveryAddresses.ForEach(address =>
                 {
-                    customer.CustomerDeliveryAddresses.Add(new DeliveryAddress 
+                    customer.DeliveryAddresses.Add(new DeliveryAddress 
                     {
                         Address = address.Address.Trim(),
                         IsDefault = address.IsDefault,
@@ -78,7 +78,7 @@ namespace Modules.Customers
 
         public IResponse<EmptyResponse> DeleteDeliveryAddress(DeleteDeliveryAddressRequest request)
         {
-            var address = db.CustomerDeliveryAddresses.SingleOrDefault(address => address.CustomerId == request.CustomerId && address.CustomerDeliveryAddressId == request.DeliveryAddressId);
+            var address = db.DeliveryAddresses.SingleOrDefault(address => address.CustomerId == request.CustomerId && address.DeliveryAddressId == request.DeliveryAddressId);
             if (address == null)
             {
                 return ResponseHelper.Fail<EmptyResponse>(StatusCode.DeliveryAddressNotFound);
@@ -111,7 +111,7 @@ namespace Modules.Customers
 
         public IResponse<MakeDeliveryAddressDefaultResponse> MakeDeliveryAddressDefault(MakeDeliveryAddressDefaultRequest request)
         {
-            var address = db.CustomerDeliveryAddresses.SingleOrDefault(address => address.CustomerId == request.CustomerId && address.CustomerDeliveryAddressId == request.DeliveryAddressId && address.DeleteTimestamp == null);
+            var address = db.DeliveryAddresses.SingleOrDefault(address => address.CustomerId == request.CustomerId && address.DeliveryAddressId == request.DeliveryAddressId && address.DeleteTimestamp == null);
             if (address == null)
             {
                 return ResponseHelper.Fail<MakeDeliveryAddressDefaultResponse>(StatusCode.DeliveryAddressNotFound);
@@ -142,7 +142,7 @@ namespace Modules.Customers
 
         public IResponse<UpdateDeliveryAddressResponse> UpdateDeliveryAddress(UpdateDeliveryAddressRequest request)
         {
-            var address = db.CustomerDeliveryAddresses.SingleOrDefault(address => address.CustomerId == request.CustomerId && address.CustomerDeliveryAddressId == request.DeliveryAddressId && address.DeleteTimestamp == null);
+            var address = db.DeliveryAddresses.SingleOrDefault(address => address.CustomerId == request.CustomerId && address.DeliveryAddressId == request.DeliveryAddressId && address.DeleteTimestamp == null);
             if (address == null)
             {
                 return ResponseHelper.Fail<UpdateDeliveryAddressResponse>(StatusCode.DeliveryAddressNotFound);
@@ -168,15 +168,15 @@ namespace Modules.Customers
                 Timestamp = customer.Timestamp
             };
 
-            if (customer.CustomerDeliveryAddresses != null && customer.CustomerDeliveryAddresses.Any())
+            if (customer.DeliveryAddresses != null && customer.DeliveryAddresses.Any())
             {
                 result.DeliveryAddresses = new List<DeliveryAddressModel>();
 
-                customer.CustomerDeliveryAddresses.ToList().ForEach(address =>
+                customer.DeliveryAddresses.ToList().ForEach(address =>
                 {
                     result.DeliveryAddresses.Add(new DeliveryAddressModel
                     {
-                        CustomerDeliveryAddressId = address.CustomerDeliveryAddressId,
+                        CustomerDeliveryAddressId = address.DeliveryAddressId,
                         Address = address.Address,
                         IsDefault = address.IsDefault,
                         CustomerId = address.CustomerId,
@@ -192,7 +192,7 @@ namespace Modules.Customers
         {
             return new DeliveryAddressModel
             {
-                CustomerDeliveryAddressId = address.CustomerDeliveryAddressId,
+                CustomerDeliveryAddressId = address.DeliveryAddressId,
                 Address = address.Address,
                 IsDefault = address.IsDefault,
                 CustomerId = address.CustomerId,

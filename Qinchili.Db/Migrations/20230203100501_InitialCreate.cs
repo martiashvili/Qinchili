@@ -50,12 +50,12 @@ namespace Qinchili.Db.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "CustomerDeliveryAddresses",
+                name: "DeliveryAddresses",
                 columns: table => new
                 {
-                    CustomerDeliveryAddressId = table.Column<int>(type: "int", nullable: false)
+                    DeliveryAddressId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    CustomerId = table.Column<int>(type: "int", nullable: false),
+                    CustomerId = table.Column<int>(type: "int", nullable: true),
                     IsDefault = table.Column<bool>(type: "bit", nullable: false),
                     Address = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Timestamp = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -63,13 +63,12 @@ namespace Qinchili.Db.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_CustomerDeliveryAddresses", x => x.CustomerDeliveryAddressId);
+                    table.PrimaryKey("PK_DeliveryAddresses", x => x.DeliveryAddressId);
                     table.ForeignKey(
-                        name: "FK_CustomerDeliveryAddresses_Customers_CustomerId",
+                        name: "FK_DeliveryAddresses_Customers_CustomerId",
                         column: x => x.CustomerId,
                         principalTable: "Customers",
-                        principalColumn: "CustomerId",
-                        onDelete: ReferentialAction.NoAction);
+                        principalColumn: "CustomerId");
                 });
 
             migrationBuilder.CreateTable(
@@ -78,9 +77,9 @@ namespace Qinchili.Db.Migrations
                 {
                     OrderId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    CustomerId = table.Column<int>(type: "int", nullable: false),
+                    CustomerId = table.Column<int>(type: "int", nullable: true),
                     DeiveryAddressId = table.Column<int>(type: "int", nullable: true),
-                    AddressCustomerDeliveryAddressId = table.Column<int>(type: "int", nullable: false),
+                    AddressDeliveryAddressId = table.Column<int>(type: "int", nullable: false),
                     CompleteDeliveryInfo = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Discount = table.Column<long>(type: "bigint", nullable: true),
                     DeliveryPrice = table.Column<long>(type: "bigint", nullable: true),
@@ -95,16 +94,15 @@ namespace Qinchili.Db.Migrations
                 {
                     table.PrimaryKey("PK_Orders", x => x.OrderId);
                     table.ForeignKey(
-                        name: "FK_Orders_CustomerDeliveryAddresses_AddressCustomerDeliveryAddressId",
-                        column: x => x.AddressCustomerDeliveryAddressId,
-                        principalTable: "CustomerDeliveryAddresses",
-                        principalColumn: "CustomerDeliveryAddressId",
-                        onDelete: ReferentialAction.NoAction);
-                    table.ForeignKey(
                         name: "FK_Orders_Customers_CustomerId",
                         column: x => x.CustomerId,
                         principalTable: "Customers",
-                        principalColumn: "CustomerId",
+                        principalColumn: "CustomerId");
+                    table.ForeignKey(
+                        name: "FK_Orders_DeliveryAddresses_AddressDeliveryAddressId",
+                        column: x => x.AddressDeliveryAddressId,
+                        principalTable: "DeliveryAddresses",
+                        principalColumn: "DeliveryAddressId",
                         onDelete: ReferentialAction.NoAction);
                 });
 
@@ -138,8 +136,8 @@ namespace Qinchili.Db.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_CustomerDeliveryAddresses_CustomerId",
-                table: "CustomerDeliveryAddresses",
+                name: "IX_DeliveryAddresses_CustomerId",
+                table: "DeliveryAddresses",
                 column: "CustomerId");
 
             migrationBuilder.CreateIndex(
@@ -153,9 +151,9 @@ namespace Qinchili.Db.Migrations
                 column: "ProductId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Orders_AddressCustomerDeliveryAddressId",
+                name: "IX_Orders_AddressDeliveryAddressId",
                 table: "Orders",
-                column: "AddressCustomerDeliveryAddressId");
+                column: "AddressDeliveryAddressId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Orders_CustomerId",
@@ -176,7 +174,7 @@ namespace Qinchili.Db.Migrations
                 name: "Products");
 
             migrationBuilder.DropTable(
-                name: "CustomerDeliveryAddresses");
+                name: "DeliveryAddresses");
 
             migrationBuilder.DropTable(
                 name: "Customers");

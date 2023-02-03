@@ -55,19 +55,19 @@ namespace Qinchili.Db.Migrations
                     b.ToTable("Customers");
                 });
 
-            modelBuilder.Entity("Qinchili.Domain.CustomerDeliveryAddress", b =>
+            modelBuilder.Entity("Qinchili.Domain.DeliveryAddress", b =>
                 {
-                    b.Property<int>("CustomerDeliveryAddressId")
+                    b.Property<int>("DeliveryAddressId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CustomerDeliveryAddressId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("DeliveryAddressId"));
 
                     b.Property<string>("Address")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("CustomerId")
+                    b.Property<int?>("CustomerId")
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("DeleteTimestamp")
@@ -79,11 +79,11 @@ namespace Qinchili.Db.Migrations
                     b.Property<DateTime>("Timestamp")
                         .HasColumnType("datetime2");
 
-                    b.HasKey("CustomerDeliveryAddressId");
+                    b.HasKey("DeliveryAddressId");
 
                     b.HasIndex("CustomerId");
 
-                    b.ToTable("CustomerDeliveryAddresses");
+                    b.ToTable("DeliveryAddresses");
                 });
 
             modelBuilder.Entity("Qinchili.Domain.Order", b =>
@@ -94,7 +94,7 @@ namespace Qinchili.Db.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("OrderId"));
 
-                    b.Property<int>("AddressCustomerDeliveryAddressId")
+                    b.Property<int>("AddressDeliveryAddressId")
                         .HasColumnType("int");
 
                     b.Property<string>("Comment")
@@ -132,7 +132,7 @@ namespace Qinchili.Db.Migrations
 
                     b.HasKey("OrderId");
 
-                    b.HasIndex("AddressCustomerDeliveryAddressId");
+                    b.HasIndex("AddressDeliveryAddressId");
 
                     b.HasIndex("CustomerId");
 
@@ -209,22 +209,20 @@ namespace Qinchili.Db.Migrations
                     b.ToTable("Products");
                 });
 
-            modelBuilder.Entity("Qinchili.Domain.CustomerDeliveryAddress", b =>
+            modelBuilder.Entity("Qinchili.Domain.DeliveryAddress", b =>
                 {
                     b.HasOne("Qinchili.Domain.Customer", "Customer")
-                        .WithMany("CustomerDeliveryAddresses")
-                        .HasForeignKey("CustomerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .WithMany("DeliveryAddresses")
+                        .HasForeignKey("CustomerId");
 
                     b.Navigation("Customer");
                 });
 
             modelBuilder.Entity("Qinchili.Domain.Order", b =>
                 {
-                    b.HasOne("Qinchili.Domain.CustomerDeliveryAddress", "Address")
+                    b.HasOne("Qinchili.Domain.DeliveryAddress", "Address")
                         .WithMany("Orders")
-                        .HasForeignKey("AddressCustomerDeliveryAddressId")
+                        .HasForeignKey("AddressDeliveryAddressId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -258,12 +256,12 @@ namespace Qinchili.Db.Migrations
 
             modelBuilder.Entity("Qinchili.Domain.Customer", b =>
                 {
-                    b.Navigation("CustomerDeliveryAddresses");
+                    b.Navigation("DeliveryAddresses");
 
                     b.Navigation("Orders");
                 });
 
-            modelBuilder.Entity("Qinchili.Domain.CustomerDeliveryAddress", b =>
+            modelBuilder.Entity("Qinchili.Domain.DeliveryAddress", b =>
                 {
                     b.Navigation("Orders");
                 });
