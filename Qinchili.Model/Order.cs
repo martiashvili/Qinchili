@@ -10,7 +10,7 @@ namespace Qinchili.Domain
 
         public Customer Customer { get; set; } 
 
-        public int? DeiveryAddressId { get; set; }
+        public int? DeliveryAddressId { get; set; }
 
         public DeliveryAddress Address { get; set; }
 

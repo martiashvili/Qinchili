@@ -78,8 +78,7 @@ namespace Qinchili.Db.Migrations
                     OrderId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     CustomerId = table.Column<int>(type: "int", nullable: true),
-                    DeiveryAddressId = table.Column<int>(type: "int", nullable: true),
-                    AddressDeliveryAddressId = table.Column<int>(type: "int", nullable: false),
+                    DeliveryAddressId = table.Column<int>(type: "int", nullable: true),
                     CompleteDeliveryInfo = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Discount = table.Column<long>(type: "bigint", nullable: true),
                     DeliveryPrice = table.Column<long>(type: "bigint", nullable: true),
@@ -99,11 +98,10 @@ namespace Qinchili.Db.Migrations
                         principalTable: "Customers",
                         principalColumn: "CustomerId");
                     table.ForeignKey(
-                        name: "FK_Orders_DeliveryAddresses_AddressDeliveryAddressId",
-                        column: x => x.AddressDeliveryAddressId,
+                        name: "FK_Orders_DeliveryAddresses_DeliveryAddressId",
+                        column: x => x.DeliveryAddressId,
                         principalTable: "DeliveryAddresses",
-                        principalColumn: "DeliveryAddressId",
-                        onDelete: ReferentialAction.NoAction);
+                        principalColumn: "DeliveryAddressId");
                 });
 
             migrationBuilder.CreateTable(
@@ -151,14 +149,14 @@ namespace Qinchili.Db.Migrations
                 column: "ProductId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Orders_AddressDeliveryAddressId",
-                table: "Orders",
-                column: "AddressDeliveryAddressId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Orders_CustomerId",
                 table: "Orders",
                 column: "CustomerId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Orders_DeliveryAddressId",
+                table: "Orders",
+                column: "DeliveryAddressId");
         }
 
         /// <inheritdoc />

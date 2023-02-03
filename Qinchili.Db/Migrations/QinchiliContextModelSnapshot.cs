@@ -94,9 +94,6 @@ namespace Qinchili.Db.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("OrderId"));
 
-                    b.Property<int>("AddressDeliveryAddressId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Comment")
                         .HasColumnType("nvarchar(max)");
 
@@ -106,11 +103,11 @@ namespace Qinchili.Db.Migrations
                     b.Property<int?>("CustomerId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("DeiveryAddressId")
-                        .HasColumnType("int");
-
                     b.Property<DateTime?>("DeliveredTimestamp")
                         .HasColumnType("datetime2");
+
+                    b.Property<int?>("DeliveryAddressId")
+                        .HasColumnType("int");
 
                     b.Property<long?>("DeliveryPrice")
                         .HasColumnType("bigint");
@@ -132,9 +129,9 @@ namespace Qinchili.Db.Migrations
 
                     b.HasKey("OrderId");
 
-                    b.HasIndex("AddressDeliveryAddressId");
-
                     b.HasIndex("CustomerId");
+
+                    b.HasIndex("DeliveryAddressId");
 
                     b.ToTable("Orders");
                 });
@@ -220,15 +217,13 @@ namespace Qinchili.Db.Migrations
 
             modelBuilder.Entity("Qinchili.Domain.Order", b =>
                 {
-                    b.HasOne("Qinchili.Domain.DeliveryAddress", "Address")
-                        .WithMany("Orders")
-                        .HasForeignKey("AddressDeliveryAddressId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("Qinchili.Domain.Customer", "Customer")
                         .WithMany("Orders")
                         .HasForeignKey("CustomerId");
+
+                    b.HasOne("Qinchili.Domain.DeliveryAddress", "Address")
+                        .WithMany("Orders")
+                        .HasForeignKey("DeliveryAddressId");
 
                     b.Navigation("Address");
 
