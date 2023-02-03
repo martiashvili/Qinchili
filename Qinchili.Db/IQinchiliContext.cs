@@ -10,7 +10,7 @@ namespace Qinchili.Db
         
         DbSet<Customer> Customers { get; set; }
 
-        DbSet<CustomerDeliveryAddress> CustomerDeliveryAddresses { get; set; }
+        DbSet<DeliveryAddress> CustomerDeliveryAddresses { get; set; }
 
         DbSet<Order> Orders { get; set; }
 

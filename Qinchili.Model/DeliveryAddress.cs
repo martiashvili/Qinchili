@@ -1,14 +1,14 @@
 ﻿namespace Qinchili.Domain
 {
-    public class CustomerDeliveryAddress
+    public class DeliveryAddress
     {
-        public int CustomerDeliveryAddressId { get; set; }
+        public int DeliveryAddressId { get; set; }
 
-        public int CustomerId { get; set; }
-
-        public bool IsDefault { get; set; }
+        public int? CustomerId { get; set; }
 
         public Customer Customer { get; set; }
+
+        public bool IsDefault { get; set; }
 
         public string Address { get; set; }
 

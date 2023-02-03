@@ -1,24 +1,23 @@
 ﻿using Common.Enums;
+using Modules.Customers;
 
-namespace Qinchili.Domain
+namespace Modules.Orders
 {
-    public class Order
+    public class OrderModel
     {
         public int OrderId { get; set; }
 
         public int? CustomerId { get; set; }
 
-        public Customer Customer { get; set; } 
-
-        public int? DeiveryAddressId { get; set; }
-
-        public DeliveryAddress Address { get; set; }
+        public DeliveryAddressModel Address { get; set; }
 
         public string? CompleteDeliveryInfo { get; set; }
 
         public long? Discount { get; set; }
 
         public long? DeliveryPrice { get; set; }
+
+        public long? OrderTotalPrice { get; set; }
 
         public bool IsPaid { get; set; }
 
@@ -29,9 +28,7 @@ namespace Qinchili.Domain
         public DateTime Timestamp { get; set; }
 
         public DateTime? SentTimestamp { get; set; }
-        
-        public DateTime? DeliveredTimestamp { get; set; }
 
-        public ICollection<OrderItem> OrderItems { get; set; }
+        public List<OrderItemModel> Items { get; set; }
     }
 }

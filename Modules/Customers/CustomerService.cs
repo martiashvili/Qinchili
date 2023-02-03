@@ -23,7 +23,7 @@ namespace Modules.Customers
                 return ResponseHelper.Fail<AddDeliveryAddressResponse>(StatusCode.DeliveryAddressAlreadyExists);
             }
 
-            address = new CustomerDeliveryAddress
+            address = new DeliveryAddress
             {
                 CustomerId = request.CustomerId,
                 Address = request.Address.Trim(),
@@ -57,11 +57,11 @@ namespace Modules.Customers
 
             if (request.DeliveryAddresses != null && request.DeliveryAddresses.Any())
             {
-                customer.CustomerDeliveryAddresses = new List<CustomerDeliveryAddress>();
+                customer.CustomerDeliveryAddresses = new List<DeliveryAddress>();
 
                 request.DeliveryAddresses.ForEach(address =>
                 {
-                    customer.CustomerDeliveryAddresses.Add(new CustomerDeliveryAddress 
+                    customer.CustomerDeliveryAddresses.Add(new DeliveryAddress 
                     {
                         Address = address.Address.Trim(),
                         IsDefault = address.IsDefault,
@@ -188,7 +188,7 @@ namespace Modules.Customers
             return result;
         }
 
-        private DeliveryAddressModel CreateDeliveryAddressModel(CustomerDeliveryAddress address)
+        private DeliveryAddressModel CreateDeliveryAddressModel(DeliveryAddress address)
         {
             return new DeliveryAddressModel
             {
